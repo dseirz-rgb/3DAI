@@ -1,0 +1,5 @@
+{
+  "name": "Tencent Hunyuan 3D Generator",
+  "description": "Generate high-quality 3D models from text or images using Tencent Hunyuan 3D API.",
+  "requestFramePermissions": []
+}
