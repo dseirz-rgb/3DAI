@@ -18,6 +18,9 @@ def generate_material(input_mesh: str, material_descriptor: dict, output_folder:
         if not os.path.exists(sat_bin):
             raise ValueError("Substance Automation Toolkit not found. Set SAT_INSTALL_PATH.")
         
+        # Ensure output folder exists
+        os.makedirs(output_folder, exist_ok=True)
+        
         param_file = os.path.join(output_folder, "material_params.json")
         with open(param_file, "w") as f:
             f.write(json.dumps(material_descriptor))

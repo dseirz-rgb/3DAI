@@ -14,6 +14,8 @@ def package_assets(mesh_file: str, texture_folder: str, output_path: str):
         success (bool): True if packaging succeeds; False otherwise.
     """
     try:
+        # ue-packer is a command-line tool for packaging assets into Unreal Engine format
+        # It should be available in PATH or installed separately
         unreal_bin = shutil.which("ue-packer")
         if not unreal_bin:
             raise ValueError("Unreal Packer tool not found.")

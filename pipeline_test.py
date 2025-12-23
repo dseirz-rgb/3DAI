@@ -28,5 +28,5 @@ def test_pipeline(mesh_file: str):
         print("[ERROR] Packaging failed.")
 
 if __name__ == "__main__":
-    # Test with an example mesh file
+    # Test with an example mesh file (replace 'input.obj' with actual mesh file path)
     test_pipeline("input.obj")
