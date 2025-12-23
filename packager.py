@@ -15,11 +15,10 @@ def package_assets(mesh_file: str, texture_folder: str, output_path: str):
     """
     try:
         # ue-packer is a command-line tool for packaging assets into Unreal Engine format
-        # Install it via: npm install -g ue-packer
-        # Or download from: https://github.com/unreal-engine/ue-packer (example)
+        # Ensure the tool is available in your PATH
         unreal_bin = shutil.which("ue-packer")
         if not unreal_bin:
-            raise ValueError("Unreal Packer tool not found. Install it using 'npm install -g ue-packer' or ensure it's in your PATH.")
+            raise ValueError("Unreal Packer tool not found. Ensure ue-packer is installed and available in your PATH.")
 
         # Ensure output directory exists
         output_dir = os.path.dirname(output_path)

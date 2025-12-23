@@ -33,5 +33,8 @@ def test_pipeline(mesh_file: str):
         print("[ERROR] Packaging failed.")
 
 if __name__ == "__main__":
-    # Test with an example mesh file (replace 'input.obj' with actual mesh file path)
-    test_pipeline("input.obj")
+    import sys
+    # Test with an example mesh file
+    # Usage: python pipeline_test.py [mesh_file]
+    mesh_file = sys.argv[1] if len(sys.argv) > 1 else "input.obj"
+    test_pipeline(mesh_file)

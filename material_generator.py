@@ -32,7 +32,7 @@ def generate_material(input_mesh: str, material_descriptor: dict, output_folder:
         
         param_file = os.path.join(output_folder, "material_params.json")
         with open(param_file, "w") as f:
-            f.write(json.dumps(material_descriptor))
+            json.dump(material_descriptor, f)
 
         subprocess.run([
             sat_bin, 
