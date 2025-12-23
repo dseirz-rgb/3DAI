@@ -1,6 +1,7 @@
 import os
 import subprocess
 import json
+import shutil
 
 def generate_material(input_mesh: str, material_descriptor: dict, output_folder: str):
     """
@@ -14,9 +15,17 @@ def generate_material(input_mesh: str, material_descriptor: dict, output_folder:
         success (bool): True if generation succeeds; False otherwise.
     """
     try:
-        sat_bin = os.environ.get("SAT_INSTALL_PATH", "sbsrender")
-        if not os.path.exists(sat_bin) and sat_bin != "sbsrender":
-            raise ValueError("Substance Automation Toolkit not found. Set SAT_INSTALL_PATH.")
+        # Check for SAT installation: either from environment variable (full path) or in PATH
+        sat_bin = os.environ.get("SAT_INSTALL_PATH")
+        if sat_bin:
+            # Use explicitly configured path
+            if not os.path.exists(sat_bin):
+                raise ValueError(f"Substance Automation Toolkit not found at {sat_bin}. Check SAT_INSTALL_PATH.")
+        else:
+            # Try to find sbsrender in PATH
+            sat_bin = shutil.which("sbsrender")
+            if not sat_bin:
+                raise ValueError("Substance Automation Toolkit not found. Either set SAT_INSTALL_PATH to the full path of sbsrender or ensure sbsrender is in your PATH.")
         
         # Ensure output folder exists
         os.makedirs(output_folder, exist_ok=True)
