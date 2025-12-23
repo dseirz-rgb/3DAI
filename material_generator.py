@@ -14,8 +14,8 @@ def generate_material(input_mesh: str, material_descriptor: dict, output_folder:
         success (bool): True if generation succeeds; False otherwise.
     """
     try:
-        sat_bin = os.environ.get("SAT_INSTALL_PATH", "/path/to/sbsrender")
-        if not os.path.exists(sat_bin):
+        sat_bin = os.environ.get("SAT_INSTALL_PATH", "sbsrender")
+        if not os.path.exists(sat_bin) and sat_bin != "sbsrender":
             raise ValueError("Substance Automation Toolkit not found. Set SAT_INSTALL_PATH.")
         
         # Ensure output folder exists

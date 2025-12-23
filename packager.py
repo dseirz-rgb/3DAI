@@ -20,6 +20,11 @@ def package_assets(mesh_file: str, texture_folder: str, output_path: str):
         if not unreal_bin:
             raise ValueError("Unreal Packer tool not found.")
 
+        # Ensure output directory exists
+        output_dir = os.path.dirname(output_path)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+
         subprocess.run([
             unreal_bin, 
             "--mesh", mesh_file, 

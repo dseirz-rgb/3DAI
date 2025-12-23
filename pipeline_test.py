@@ -1,3 +1,4 @@
+import os
 from material_generator import generate_material
 from packager import package_assets
 
@@ -9,6 +10,10 @@ def test_pipeline(mesh_file: str):
     """
     texture_folder = "./textures/"
     output_path = "./output/output.uasset"
+    
+    # Ensure output directories exist
+    os.makedirs(texture_folder, exist_ok=True)
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     print("=== Testing Material Generation ===")
     material_descriptor = {
